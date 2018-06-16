@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.order(created_at: :desc).page(page_number)
+    @orders = Order.order(created_at: :desc).page(page_number).per(10)
   end
   
   def new
