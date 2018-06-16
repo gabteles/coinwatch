@@ -35,6 +35,8 @@
 
         <%= paginate @orders %>
         
-        <%= link_to 'New order', new_orders_path %>
+        <div class="mt-lg text-right">
+            <%= link_to 'New order', new_orders_path, class: 'primary button' %>
+        </div>
     <% end %>
 </div>
