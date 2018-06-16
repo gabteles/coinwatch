@@ -59,8 +59,16 @@ h3 {
 
 // Alignment
 
+.text-left {
+    text-align: left;
+}
+
 .text-center {
     text-align: center;
+}
+
+.text-right {
+    text-align: right;
 }
 
 // Spacing
@@ -68,14 +76,42 @@ h3 {
 $spacings: (sm: 0.5em, md: 1em, lg: 2em, xg: 8em);
 
 @each $label, $spacing in $spacings {
+    .m-#{$label} { margin: $spacing; }
     .mt-#{$label}, .mv-#{$label} { margin-top: $spacing; }
     .mr-#{$label}, .mh-#{$label} { margin-right: $spacing; }
     .mb-#{$label}, .mv-#{$label} { margin-bottom: $spacing; }
     .ml-#{$label}, .mh-#{$label} { margin-left: $spacing; }
+    .p-#{$label} { padding: $spacing; }
     .pt-#{$label}, .pv-#{$label} { padding-top: $spacing; }
     .pr-#{$label}, .ph-#{$label} { padding-right: $spacing; }
     .pb-#{$label}, .pv-#{$label} { padding-bottom: $spacing; }
     .pl-#{$label}, .ph-#{$label} { padding-left: $spacing; }
+}
+
+// Tables
+table {
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 100%;
+
+    thead {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #ffffff;
+        background: map-get($colors, 'primary');
+    }
+
+    th {
+        padding: 1em 0.5em;
+    }
+
+    td {
+        padding: 0.75em 0.5em;
+    }
+
+    th, td {
+        border-bottom: 1px solid #e0e0e0;
+    }
 }
 
 // Buttons
@@ -95,4 +131,11 @@ $spacings: (sm: 0.5em, md: 1em, lg: 2em, xg: 8em);
         border-color: map-get($colors, 'primary');
         background: rgba(map-get($colors, 'primary'), 0.1);
     }
+}
+
+// Papers
+
+.paper {
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }

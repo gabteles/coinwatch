@@ -1,28 +1,40 @@
-<% if @orders.empty? %>
-    You haven't registered any order. 
-    <%= link_to 'Register your first!', new_orders_path %>
-<% else %>
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Currency</th>
-                <th>Order Details</th>
-            </tr>
-        </thead>
+<div id="orders">
+    <h2 class="mb-sm">My Orders</h2>
 
-        <tbody>
-            <% @orders.each do |order| %>
+    <% if @orders.empty? %>
+        <div class="paper p-md">
+            You haven't registered any order. 
+            <%= link_to 'Register your first!', new_orders_path %>
+        </div>
+    <% else %>
+        <table class="list">
+            <thead>
                 <tr>
-                    <td><%= order.created_at %></td>
-                    <td><%= order.currency %></td>
-                    <td><%= order.amount %> @ <%= number_to_currency(order.purchase_price, locale: :en) %></td>
+                    <th class="text-left">Date</th>
+                    <th class="text-center">Currency</th>
+                    <th class="text-right">Values</th>
                 </tr>
-            <% end %>
-        </tbody>
-    </table>
+            </thead>
 
-    <%= paginate @orders %>
-    
-    <%= link_to 'New order', new_orders_path %>
-<% end %>
+            <tbody>
+                <% @orders.each do |order| %>
+                    <tr>
+                        <td>
+                            <%= l(order.created_at, format: :short) %>
+                        </td>
+                        <td class="text-center">
+                            <%= order.currency %>
+                        </td>
+                        <td class="details text-right">
+                            <%= order.amount %> @ <%= number_to_currency(order.purchase_price, locale: :en) %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <%= paginate @orders %>
+        
+        <%= link_to 'New order', new_orders_path %>
+    <% end %>
+</div>
