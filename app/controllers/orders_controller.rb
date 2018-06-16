@@ -12,7 +12,9 @@ class OrdersController < ApplicationController
     #OrdersService.create()
     @order = Order.new(order_params)
     @order.id = SecureRandom.uuid
-    @order.save
+    success = @order.save
+
+    redirect_to(orders_path) if success
   end
 
   private
