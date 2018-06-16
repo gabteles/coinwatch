@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_16_135559) do
+ActiveRecord::Schema.define(version: 2018_06_16_153906) do
+
+# Could not dump table "orders" because of following StandardError
+#   Unknown type 'uuid' for column 'id'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
