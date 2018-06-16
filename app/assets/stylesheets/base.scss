@@ -7,21 +7,41 @@ html, body, main {
 }
 
 main {
-    background: map-get($colors, 'primary');
+    background: #ddd;
+    background: linear-gradient(to right, #ddd, #ffffff);
 }
 
 * {
     font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-// HEADERS
+a {
+    text-decoration: none;
+    color: map-get($colors, 'primary');
+    transition: 300ms;
+}
+
+// Headers
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    
+    &.logo {
+        background: map-get($colors, 'primary');
+        background: linear-gradient(to right, map-get($colors, 'primary'), map-get($colors, 'secondary'));
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: rgba(0,0,0,.2);
+    }
+}
 
 h1 {
-    font-family: 'Roboto Slab', serif;
-    font-size: 96px;
+    font-size: 6em;
 
     & + .subheader {
-        font-size: 24px;
+        font-size: 2em;
     }
 }
 
@@ -29,4 +49,38 @@ h1 {
 
 .text-center {
     text-align: center;
+}
+
+// Spacing
+
+$spacings: (sm: 0.5em, md: 1em, lg: 2em, xg: 8em);
+
+@each $label, $spacing in $spacings {
+    .mt-#{$label}, .mv-#{$label} { margin-top: $spacing; }
+    .mr-#{$label}, .mh-#{$label} { margin-right: $spacing; }
+    .mb-#{$label}, .mv-#{$label} { margin-bottom: $spacing; }
+    .ml-#{$label}, .mh-#{$label} { margin-left: $spacing; }
+    .pt-#{$label}, .pv-#{$label} { padding-top: $spacing; }
+    .pr-#{$label}, .ph-#{$label} { padding-right: $spacing; }
+    .pb-#{$label}, .pv-#{$label} { padding-bottom: $spacing; }
+    .pl-#{$label}, .ph-#{$label} { padding-left: $spacing; }
+}
+
+// Buttons
+
+.button {
+    padding: 6px 20px;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: 300ms;
+    
+    &:hover {
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    }
+    
+    &.primary {
+        color: map-get($colors, 'primary');
+        border-color: map-get($colors, 'primary');
+        background: rgba(map-get($colors, 'primary'), 0.1);
+    }
 }
