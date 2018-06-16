@@ -1,7 +1,29 @@
-<!-- TODO: Layout -->
-<%= form_for @order, url: { action: 'create' } do |f| %>
-  <%= f.collection_select :currency, @currencies, :symbol, :symbol %>
-  <%= f.text_field :amount %>
-  <%= f.text_field :purchase_price %>
-  <%= f.submit "Create" %>
-<% end %>
+<div id="orders">
+    <h2 class="mb-sm">New Order</h2>
+
+    <div class="paper p-md">
+        <%= form_for @order, url: { action: 'create' } do |f| %>
+            <div class="input-group">
+                <%= f.label :currency %>
+                <%= f.collection_select :currency, @currencies, :symbol, :symbol %>
+            </div>
+
+            <!-- TODO: Format input for amount & purchase price -->
+
+            <div class="input-group">
+                <%= f.label :amount %>
+                <%= f.text_field :amount %>
+            </div>
+
+            <div class="input-group">
+                <%= f.label :purchase_price %>
+                <%= f.text_field :purchase_price %>
+            </div>
+
+            <div class="mt-lg">
+                <%= f.submit 'Create', class: 'primary button mr-md' %>
+                <%= link_to 'Cancel', orders_path, class: 'button' %>
+            </div>
+        <% end %>
+    </div>
+</div>
