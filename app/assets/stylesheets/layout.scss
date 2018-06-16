@@ -1,0 +1,41 @@
+@import 'includes/variables';
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    // TODO: Mobile friendly
+    width: 220px;
+
+    box-shadow: inset -3px 0 4px rgba(0, 0, 0, 0.15);
+
+    .logo {
+        position: relative;
+        left: -2px;
+    }
+
+    nav ul {
+        font-family: 'Roboto', sans-serif;
+
+        li {
+            a {                
+                padding: 1em;
+                display: inline-block;
+                width: 100%;
+                
+                &:hover {
+                    background: rgba(map-get($colors, 'primary'), 0.1);
+                }
+            }
+        }
+    }
+}
+
+main {
+    flex: 1;
+    background: #fafafa;
+    padding: 2em;
+}

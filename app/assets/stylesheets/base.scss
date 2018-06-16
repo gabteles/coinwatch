@@ -6,15 +6,11 @@ html, body, main {
     height: 100%;
 }
 
-main {
-    background: #ddd;
-    background: linear-gradient(to right, #ddd, #ffffff);
-}
-
 * {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
 }
 
 a {
@@ -42,6 +38,22 @@ h1 {
 
     & + .subheader {
         font-size: 2em;
+    }
+}
+
+h2 {
+    font-size: 3em;
+
+    & + .subheader {
+        font-size: 1em;
+    }
+}
+
+h3 {
+    font-size: 2em;
+
+    & + .subheader {
+        font-size: 0.66em;
     }
 }
 

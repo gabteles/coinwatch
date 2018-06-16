@@ -14,10 +14,17 @@
   </head>
 
   <body>
-    <!-- TODO: Style this & check if this is the best place -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <% if user_signed_in? %>
+        <%= render 'layouts/sidebar' %>
+      <% end %>
 
-    <%= yield %>
+      <main>
+        <!-- TODO: Style this & check if this is the best place -->
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+
+        <%= yield %>
+      </main>
   </body>
 </html>

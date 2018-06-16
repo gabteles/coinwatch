@@ -1,0 +1,11 @@
+<div class="sidebar pv-md">
+    <h3 class="logo text-center mb-md">COIN<wbr/>WATCH</h3>
+
+    <nav>
+        <ul>
+            <li><%= link_to('Dashboard', dashboard_path) %></li>
+            <li><%= link_to('My Orders', orders_path) %></li>
+            <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        </ul>
+    </nav>
+</div>
