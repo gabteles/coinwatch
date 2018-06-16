@@ -4,9 +4,9 @@
         <span class="subheader">Watch your profit from cryptocurrencies</span>
 
         <div class="cta">
-            <a href="#" class="primary button">Register</a>
+            <%= link_to 'Register', new_user_registration_path, class: 'primary button' %>
             <span class="ph-md">or</span>
-            <a href="#">Login</a>
+            <%= link_to 'Login', user_session_path %>
         </div>
     </div>
 </main>
