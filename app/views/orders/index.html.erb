@@ -1,10 +1,11 @@
 <% if @orders.empty? %>
     You haven't registered any order. 
-    <span class="cta">Register your first!</span>
+    <%= link_to 'Register your first!', new_orders_path %>
 <% else %>
     <table>
         <thead>
             <tr>
+                <th>Date</th>
                 <th>Currency</th>
                 <th>Order Details</th>
             </tr>
@@ -13,10 +14,15 @@
         <tbody>
             <% @orders.each do |order| %>
                 <tr>
+                    <td><%= order.created_at %></td>
                     <td><%= order.currency %></td>
-                    <td><%= order.amount %> @ <%= order.purchase_price %></td>
+                    <td><%= order.amount %> @ <%= number_to_currency(order.purchase_price, locale: :en) %></td>
                 </tr>
             <% end %>
         </tbody>
     </table>
+
+    <%= paginate @orders %>
+    
+    <%= link_to 'New order', new_orders_path %>
 <% end %>
