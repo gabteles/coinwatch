@@ -1,1 +1,7 @@
-<!-- TODO: Show form here -->
+<!-- TODO: Layout -->
+<%= form_for @order, url: { action: 'create' } do |f| %>
+  <%= f.collection_select :currency, @currencies, :symbol, :symbol %>
+  <%= f.text_field :amount %>
+  <%= f.text_field :purchase_price %>
+  <%= f.submit "Create" %>
+<% end %>

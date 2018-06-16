@@ -2,5 +2,21 @@
     You haven't registered any order. 
     <span class="cta">Register your first!</span>
 <% else %>
-    <!-- TODO: Show orders here -->
+    <table>
+        <thead>
+            <tr>
+                <th>Currency</th>
+                <th>Order Details</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @orders.each do |order| %>
+                <tr>
+                    <td><%= order.currency %></td>
+                    <td><%= order.amount %> @ <%= order.purchase_price %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 <% end %>

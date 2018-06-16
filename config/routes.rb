@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resource :orders, only: [:new, :index]
+  resource :orders, only: [:new, :create]
+  get 'orders', to: 'orders#index'
   get 'dashboard', to: 'dashboard#index'
 
   devise_for :users, path: 'auth', path_names: { 
