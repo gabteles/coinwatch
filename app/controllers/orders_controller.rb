@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.order(created_at: :desc).page(page_number).per(10)
+    @orders = OrdersService.fetch_for_user(current_user, page_number)
   end
   
   def new
@@ -9,12 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #OrdersService.create()
-    @order = Order.new(order_params)
-    @order.id = SecureRandom.uuid
-    success = @order.save
-
-    redirect_to(orders_path) if success
+    redirect_to(orders_path) if OrdersService.create(current_user, order_params)
   end
 
   private
