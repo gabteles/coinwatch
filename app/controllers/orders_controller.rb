@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @orders = OrdersService.fetch_for_user(current_user, page_number)
   end
