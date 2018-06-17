@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Currency.create!(id: SecureRandom.uuid, symbol: 'BTC', value_in_usd: 15000.0)
-Currency.create!(id: SecureRandom.uuid, symbol: 'ETH', value_in_usd: 670.18)
+Currency.create!(symbol: 'BTC', value_in_usd: 15000.0)
+Currency.create!(symbol: 'ETH', value_in_usd: 670.18)
