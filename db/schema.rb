@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_17_162234) do
+ActiveRecord::Schema.define(version: 2018_06_17_205607) do
 
   create_table "crono_jobs", force: :cascade do |t|
     t.string "job_id", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_06_17_162234) do
   end
 
 # Could not dump table "orders" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
+#   Unknown type '' for column 'id'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

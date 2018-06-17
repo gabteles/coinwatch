@@ -13,6 +13,7 @@ module OrdersService
         order = Order.new(params)
         order.id = SecureRandom.uuid
         order.user_uuid = user.id
+        order.investment = order.amount * order.purchase_price
         order.save
     end
 end
