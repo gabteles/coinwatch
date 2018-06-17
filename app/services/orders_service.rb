@@ -14,6 +14,8 @@ module OrdersService
         order.id = SecureRandom.uuid
         order.user_uuid = user.id
         order.investment = order.amount * order.purchase_price
-        order.save
+        success = order.save
+        Rails.cache.delete("portfolio/#{user.id}") if success
+        success
     end
 end

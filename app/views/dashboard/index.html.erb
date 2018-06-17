@@ -1,8 +1,50 @@
-<% if @currencies.empty? %>
-    You haven't registered any buy order. 
-    <span class="cta">Register your first!</span>
-<% else %>
-    <!-- TODO: Totals -->
-    <!-- TODO: Totals per coin -->
-    <!-- TODO: Recent buy orders -->
-<% end %>
+<div id="dashboard">
+    <h2 class="mb-sm">Dashboard</h2>
+    
+    <% if @portfolio[:currency_details].empty? %>
+        <div class="paper p-md">
+            You haven't registered any buy order. 
+            <%= link_to 'Register your first!', new_orders_path %>
+        </div>
+    <% else %>
+        <div class="paper p-md mb-sm text-center totals-container">
+            <div>
+                <h3>Investment</h3>
+                <span class="subheader"><%= number_to_currency(@portfolio[:totals][:investment], locale: :en) %></span>
+            </div>
+            <div>
+                <h3>Current Value</h3>
+                <span class="subheader"><%= number_to_currency(@portfolio[:totals][:current_value], locale: :en) %></span>
+            </div>
+            <div>
+                <h3>Profit</h3>
+                <span class="subheader"><%= number_to_currency(@portfolio[:totals][:profit], locale: :en) %></span>
+            </div>
+        </div>
+
+        <div class="currency-details">
+            <% for currency in @portfolio[:currency_details] %>
+                <div class="paper p-sm m-sm currency">
+                    <h4 class="mb-sm"><%= currency[:currency] %></h4>
+                    <div class="mt-sm">
+                        <strong>Investment:</strong>
+                        <br/>
+                        <%= number_to_currency(currency[:investment], locale: :en) %>
+                    </div>
+                    <div class="mt-sm">
+                        <strong>Current Value:</strong>
+                        <br/>
+                        <%= number_to_currency(currency[:current_value], locale: :en) %>
+                    </div>
+                    <div class="mt-sm">
+                        <strong>Profit:</strong>
+                        <br/>
+                        <%= number_to_currency(currency[:profit], locale: :en) %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+        <!-- TODO: Recent buy orders -->
+    <% end %>
+</div>

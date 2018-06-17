@@ -1,3 +1,31 @@
-// Place all the styles related to the dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'includes/variables';
+
+#dashboard {
+    .totals-container {
+        display: flex;
+        flex-direction: row;
+        
+        @media screen and (max-width: map-get($breakpoints, 'largeMobile')) {
+            flex-direction: column;
+        }
+
+        & > div {
+            flex: 1;
+        }
+    }
+
+    .currency-details {
+        margin: 1em -0.5em 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        .currency {
+            flex-grow: 1;
+            width: 30%;
+
+            @media screen and (max-width: map-get($breakpoints, 'largeMobile')) {
+                width: 45%;
+            }
+        }
+    }
+}

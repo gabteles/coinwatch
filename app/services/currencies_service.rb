@@ -25,6 +25,12 @@ module CurrenciesService
                 .lazy
                 .map(&MOUNT_URL_FROM_CURRENCY_LIST)
                 .flat_map(&FETCH_EXCHANGE_RATES)
-                .each(&UPDATE_CURRENCY_EXCHANGE_RATE)
+                .each(&UPDATE_CURRENCY_EXCHANGE_RATE) # TODO: It's possible to update them all with one statement
+    end
+
+    def find_exchange_rates(*currencies)
+        Currency.find(currencies)
+                .pluck(:symbol, :value_in_usd)
+                .to_h
     end
 end

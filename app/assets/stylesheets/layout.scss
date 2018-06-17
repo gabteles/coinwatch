@@ -7,10 +7,29 @@
 }
 
 .sidebar {
-    // TODO: Mobile friendly
     width: 220px;
-
+    overflow: auto;
     box-shadow: inset -3px 0 4px rgba(0, 0, 0, 0.15);
+    
+    // TODO: Mobile friendly
+    // Mobile Insights
+    /*
+    background: white;
+    transition: 300ms;
+    z-index: 999;
+    
+    @media screen and (max-width: map-get($breakpoints, 'smallMobile')) {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -220px;
+        
+        &.open {
+            left: 0;
+            box-shadow: 3px 0 4px rgba(0, 0, 0, 0.15);
+        }
+    }
+    */
 
     .logo {
         position: relative;

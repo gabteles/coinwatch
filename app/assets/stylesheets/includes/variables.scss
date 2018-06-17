@@ -2,3 +2,8 @@ $colors: (
     'primary': #333399,
     'secondary': #ff00cc,
 );
+
+$breakpoints: (
+    'largeMobile': 915px,
+    'smallMobile': 500px,
+);
