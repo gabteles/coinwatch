@@ -71,10 +71,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => ENV['EMAIL_USERNAME'],
     :password => ENV['EMAIL_PASSWORD'],
-    :address => 'smtp.mailtrap.io',
-    :domain => 'smtp.mailtrap.io',
-    :port => '2525',
-    :authentication => :cram_md5
+    :address => ENV['EMAIL_ADDRESS'],
+    :domain => ENV['EMAIL_DOMAIN'],
+    :port => ENV['EMAIL_PORT'],
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
