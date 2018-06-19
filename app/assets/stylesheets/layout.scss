@@ -59,3 +59,37 @@ main {
     padding: 0.5em 1em;
     overflow: auto;
 }
+
+.notice, .alert {
+    position: fixed;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    animation: fadeout 1s ease 7s 1 forwards;
+    
+    &:empty {
+        display: none;
+    }
+}
+
+.notice {
+    background: rgba(map-get($colors, 'primary'), 0.1);
+}
+
+.alert {
+    background: rgba(map-get($colors, 'secondary'), 0.1);
+}
+
+@keyframes fadeout {
+    0% { 
+        opacity: 1; 
+    }
+
+    100% { 
+        opacity: 0;
+        display: none; 
+    }
+}  
