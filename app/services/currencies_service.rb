@@ -10,8 +10,8 @@ module CurrenciesService
         response.parsed_response.map { |r| [r[0], r[1]["USD"]] }
     end
 
-    UPDATE_CURRENCY_EXCHANGE_RATE = lambda do |(symbol, exchange_rate)|
-        Currency.update(symbol, value_in_usd: exchange_rate)
+    UPDATE_CURRENCY_EXCHANGE_RATE_PARAMS = lambda do |(symbol, exchange_rate)|
+        [symbol, { value_in_usd: exchange_rate }]
     end
 
     module_function
@@ -21,11 +21,14 @@ module CurrenciesService
     end
 
     def update_exchange_rates
-        Currency.in_batches(of: 100) 
-                .lazy
-                .map(&MOUNT_URL_FROM_CURRENCY_LIST)
-                .flat_map(&FETCH_EXCHANGE_RATES)
-                .each(&UPDATE_CURRENCY_EXCHANGE_RATE) # TODO: It's possible to update them all with one statement
+        updates = Currency.in_batches(of: 75) 
+                          .lazy
+                          .map(&MOUNT_URL_FROM_CURRENCY_LIST)
+                          .flat_map(&FETCH_EXCHANGE_RATES)
+                          .map(&UPDATE_CURRENCY_EXCHANGE_RATE_PARAMS)
+                          .to_h
+        
+        Currency.update(updates.keys, updates.values)
     end
 
     def find_exchange_rates(*currencies)
