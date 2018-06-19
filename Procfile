@@ -1,1 +1,1 @@
-web: bundle exec rails server -p $PORT
+web: "crono start && bundle exec rails server -p $PORT"
