@@ -8,16 +8,14 @@
                 <%= f.collection_select :currency, @currencies, :symbol, :symbol %>
             </div>
 
-            <!-- TODO: Format input for amount & purchase price -->
-
             <div class="input-group">
                 <%= f.label :amount %>
-                <%= f.text_field :amount %>
+                <%= f.text_field :amount, type: :number, min: '0.00001', step: '0.00001' %>
             </div>
 
             <div class="input-group">
                 <%= f.label :purchase_price %>
-                <%= f.text_field :purchase_price %>
+                <%= f.text_field :purchase_price, type: :number, min: '0.01', step: '0.01' %>
             </div>
 
             <div class="mt-lg">
