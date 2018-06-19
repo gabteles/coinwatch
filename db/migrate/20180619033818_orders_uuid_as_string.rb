@@ -6,9 +6,12 @@ class OrdersUuidAsString < ActiveRecord::Migration[5.2]
       t.decimal :amount
       t.decimal :purchase_price
       t.decimal :investment
+      t.string :user_uuid
 
       t.timestamps
     end
+    
+    add_index(:orders, :user_uuid, unique: false)
   end
   
   def self.down
