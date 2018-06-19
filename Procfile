@@ -1,1 +1,2 @@
-web: "crono start && bundle exec rails server -p $PORT"
+web: bundle exec rails server -p $PORT
+worker: bundle exec crono
